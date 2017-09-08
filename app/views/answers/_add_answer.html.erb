@@ -1,0 +1,10 @@
+<%= form_for Answer.new, remote: true do |c| %>
+  <%= c.hidden_field :question_id, :value => id %>
+  <div class="row">
+    <%= c.text_area :detail, rows: "8",  class: "col-xs-5", :required => true %>
+  </div>
+  <div class="col-xs-offset-2">
+    <%= c.submit 'Post Your Answer', :class => 'btn btn-primary' %>
+    <button class="btn btn-primary" id="cancel_question_answer" type="button">Cancel</button>
+  </div>
+<% end %>

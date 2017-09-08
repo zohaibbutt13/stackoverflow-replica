@@ -1,0 +1,51 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<% if can? :create, Question %>
+  <div class="row">
+    <%= link_to 'Ask Question', new_question_path, class: "btn btn-primary right" %>
+  </div>
+  <br>
+<% end %>
+
+<div class="row">
+  <h4 class="sorted_area left">
+    Sorted by: <strong><%= @value %></strong>
+  </h4>
+  <div class="sort_by dropdown right">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort by <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><%= link_to " Newest Questions", questions_path(value: "Newest Questions") %></li>
+      <li><%= link_to " Oldest Questions", questions_path(value: "Oldest Questions") %></li>
+      <li><%= link_to " Title", questions_path(value: "Question Titles") %></li>
+      <li><%= link_to " Max Answers", questions_path(value: "Max Answers") %></li>
+      <li><%= link_to " Min Answers", questions_path(value: "Min Answers") %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container_body">
+  <% @questions.each do |q| %>
+    <%= link_to question_path(q) do %>
+      <div class="row">
+        <div class="col-xs-1 answer">
+          <div class="answer_content">
+            <%= q.answers.count %>
+          </div>
+          <div class="answer_content">
+            answers
+          </div>
+        </div>
+        <div class="col-xs-11 question">
+          <div class="question_title">
+            <%= q.title %>
+          </div>
+          <div class="time">
+            <%= time_ago_in_words(q.created_at) %> ago
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="seperator"></div>
+  <% end %>
+</div>
+<%= will_paginate @questions, inner_window: 2, outer_window: 2 %>

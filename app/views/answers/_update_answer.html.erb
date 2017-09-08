@@ -1,0 +1,16 @@
+<%= form_for answer, remote: true do |c| %>
+  <div class="row">
+    <%= c.text_area :detail, rows: "8",  class: "col-xs-5", :required => true %>
+  </div>
+  <div class="col-xs-offset-2">
+    <%= c.submit 'Update Answer', :class => 'btn btn-primary', method: :patch %>
+    <button class="btn btn-primary" type="button" onclick="cancelupdate(<%= answer.id %>)">Cancel</button>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  function cancelupdate(id)
+  {
+    document.getElementById("update_answer"+id).style.display = 'none';
+  }
+</script>

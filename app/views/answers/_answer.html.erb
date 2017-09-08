@@ -1,0 +1,59 @@
+<div class="answer_data">
+<div class="row answer" id="<%= answer.id%>">
+  <div id="span<%= answer.id %>" class="answer_detail"><%= answer.detail %></div>
+
+  <div class="time">
+    <% if can? :update, answer %>
+      <a href="#update_answer<%= answer.id %>" id="edit_answer" onclick="updatefun(<%= answer.id %>)">
+        <span class="edit_delete"> edit </span>
+      </a>
+    <% end %>
+
+    <% if can? :destroy, answer %>
+      <%= link_to answer_path(answer), method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+        <span class="edit_delete"> delete </span>
+      <% end %>
+    <% end %>
+
+    <span>
+      <%= image_tag answer.user.avatar.url, style: "width:40px; height:40px"%>
+    </span>
+
+    <%= link_to user_path(answer.user) do %>
+      <span class="user_name"> 
+        <%= answer.user.first_name %> <%= answer.user.last_name %> 
+      </span>
+    <% end %>
+
+    <span><%= time_ago_in_words(answer.created_at) %> ago</span>
+
+  </div>
+  <% if can? :update, answer %>
+    <div id="update_answer<%= answer.id %>">
+      <%= render partial: 'answers/update_answer', locals: { :answer => answer } %>
+    </div>
+  <% end %>
+</div>
+
+<div class= "show_comments" id="answer_comments<%= answer.id %>">
+  <%= render answer.comments %>
+</div>
+
+<% if can? :create, Comment %>
+  <button type="button" class="btn btn-primary add_answer_comment" id="add_answer_comment<%= answer.id %>" href="#add_answer_comment" onclick="showaddcomment(<%= answer.id %>)" >Add Comment</button>
+  <div class="new_answer_comment" id="new_answer_comment<%= answer.id %>">
+    <%= render :partial => 'comments/add_comment', locals: {:id => answer.id, :type => "Answer" } %>
+  </div>
+<% end %>
+</div>
+
+<script type="text/javascript">
+  function updatefun(id)
+  {
+    document.getElementById("update_answer"+id).style.display = 'block';
+  }
+  function showaddcomment(id)
+  {
+    document.getElementById("new_answer_comment"+id).style.display = 'block';
+  }
+</script>

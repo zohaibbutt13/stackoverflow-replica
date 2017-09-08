@@ -1,0 +1,4 @@
+$('#answers').append("<%= escape_javascript render(@answer) %>");
+$('#question_answer textarea').val('');
+$('#question_answer').hide();
+$('#update_answer<%= @answer.id %>').hide();

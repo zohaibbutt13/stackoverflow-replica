@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+  <div class="question_info">
+    <div class="question_title">
+      <%= @question.title %>
+    </div>
+    <div class="seperator">
+    </div>
+    <div class="question_detail">
+      <%= @question.detail %>
+    </div>
+    <div class="time">
+      <br>
+      <% if can? :update, @question %>
+        <%= link_to edit_question_path(@question) do %> 
+          <span class="edit_delete"> edit </span>
+        <% end %>
+      <% end %>
+      <% if can? :destroy, @question %>
+        <%= link_to question_path(@question), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="edit_delete"> delete </span>
+        <% end %>
+      <% end %>
+
+      <span>
+        <%= image_tag @question.user.avatar.url, style: "width:40px; height:40px"%>
+      </span>
+
+      <%= link_to user_path(@question.user) do %><span class="user_name"><%= @question.user.first_name %>
+      <%= @question.user.last_name %></span><% end %>
+      <%= time_ago_in_words(@question.created_at) %> ago
+    </div>
+  </div>
+
+  <% if can? :create, Comment %>
+    <button type="button" class="btn btn-primary" id="add_question_comment" href="#add_question_comment" >Add Comment</button>
+    <div class="new_question_comment" id="new_question_comment">
+      <%= render :partial => 'comments/add_comment', locals: {:id => @question.id, :type => "Question" } %>
+    </div>
+  <% end %>
+  <h3>Comments:</h3>
+  <div class= "show_comments" id="comments">
+    <%= render @question.comments %>
+  </div>
+
+  <% if can? :create, Answer %>
+    <button type="button" class="btn btn-primary" id="add_answer" >Add Answer</button>
+    <div class="question_answer" id="question_answer">
+      <%= render :partial => 'answers/add_answer', locals: {:id => @question.id} %>
+    </div>
+  <% end %>
+  
+  <h3>Answers:</h3>
+  <div class="row" id="answers">
+    <%= render @question.answers %>
+  </div>
+    

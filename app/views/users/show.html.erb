@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3 img img-responsive">
+      <%= image_tag @user.avatar.url, class: "profile_picture" %>
+    </div>
+    <div class="col-xs-9">
+      <div class="panel panel-body">
+        <div class="label_names">First Name: </div><div class="value_names"><%= @user.first_name %></div>
+      </div>
+      <div class="panel panel-body">
+        <div class="label_names">Last Name: </div><div class="value_names"><%= @user.last_name %></div>
+      </div>
+      <div class="panel panel-body">
+        <div class="label_names">Email: </div><div class="value_names"><%= @user.email %></div>
+      </div> 
+      <div class="panel panel-body">
+        <div class="label_names">Phone: </div><div class="value_names"><%= @user.phone %></div>
+      </div>
+    </div>
+  </div>
+</div>

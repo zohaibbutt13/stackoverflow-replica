@@ -1,0 +1,24 @@
+<div class="comments" id="<%= comment.id %>">
+  <span id="span<%= comment.id %>"><%= comment.detail %></span>
+  <strong> - </strong><%= link_to user_path(comment.user) do %><span class="user_name"> <%= comment.user.first_name %> <%= comment.user.last_name %> </span><% end %><%= time_ago_in_words(comment.created_at) %> 
+  <% if can? :update, comment %>
+    <a href="#update_comment<%= comment.id %>" id="edit_comment" onclick="updatefunc(<%= comment.id %>)" ><span class="edit_delete"> edit </span></a>
+  <% end %> 
+  <% if can? :destroy, comment %>
+    <%= link_to comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+      <span class="edit_delete"> delete </span>
+    <% end %>
+  <% end %>
+  <% if can? :update, comment %>
+    <div id="update_comment<%= comment.id %>">
+      <%= render partial: 'comments/update_comment', locals: {:comment => comment} %>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  function updatefunc(id)
+  {
+    document.getElementById("update_comment"+id).style.display = 'block';
+  }
+</script>

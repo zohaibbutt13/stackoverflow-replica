@@ -1,0 +1,16 @@
+<%= form_for comment, remote: true do |c| %>
+  <div class="row">
+    <%= c.text_area :detail, rows: "8",  class: "col-xs-5", :required => true %>
+  </div>
+  <div class="col-xs-offset-2">
+    <%= c.submit 'Update Comment', method: :patch, :class => 'btn btn-primary' %>
+    <button class="btn btn-primary" type="button" onclick="cancelupd(<%= comment.id %>)">Cancel</button>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  function cancelupd(id)
+  {
+    document.getElementById("update_comment"+id).style.display = 'none';
+  }
+</script>

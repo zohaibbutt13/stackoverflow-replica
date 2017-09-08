@@ -1,0 +1,287 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+ header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #E3F2FD;
+}
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: gray;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+}
+
+.container {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.sort_by {
+  margin-right: 2%;
+}
+.sorted_area {
+  padding-left: 2%;
+}
+
+.container_body {
+  margin: 10px;
+  background-color: #f8f8f8;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.answer {
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.answer_content {
+  text-align: center;
+}
+
+.question {
+  padding-left: 5px;
+  padding-top: 10px;
+}
+
+.question_title {
+  color: blue;
+  font-size: 2em;
+  padding: 1px;
+  overflow: hidden;
+}
+
+.seperator {
+  border: 1px solid #BDBDBD;
+  margin: 5px;
+}
+
+.row {
+  padding: 5px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.answer_data {
+  background-color: #F5F5F5;
+}
+
+
+
+
+
+
+.answer_detail {
+  padding: 10px;
+  background-color: #EEEEEE;
+  border-radius: 5px;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+}
+
+
+
+.user_name {
+  color: blue;
+  font-size: 1.5em;
+  padding-right: 5px;
+  padding-top: 10px;
+  background-color: #f8f8f8;
+}
+
+.edit_delete {
+  color: blue;
+  font-size: 1.2em;
+  padding-right: 5px;
+  background-color: #f8f8f8;
+}
+
+.user_button {
+  padding: 6px;
+  color: white;
+  background-color: #0095ff;
+  border: 1px solid #07c;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.user_button:hover {
+  background-color: #0D47A1;
+  color: white;
+  text-decoration: none;
+}
+
+
+
+
+
+.menu {
+  margin-top: 7px;
+}
+
+
+
+
+
+.time {
+  color: #333333;
+  font-size: 10px;
+  padding: 5px;
+  float: right;
+}
+
+a{}
+
+
+
+.show_comments {
+  background-color: #F5F5F5;  
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.show_answers {
+
+}
+
+.comments {
+  margin: 10px;
+}
+
+.field_with_errors {
+  padding: 0px;
+  background-color: #eeeeee;
+  display: inline;
+}
+
+
+.question_info {
+  padding: 10px;  
+  background-color: #E0E0E0;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.question_detail {
+  padding: 5px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.new_question_comment {
+  display: none;
+}
+
+#question_answer {
+  display: none;
+}
+
+.profile_picture {
+  padding: 5px;
+  float: left;
+  width: 200px;
+  height: 200px;
+}
+
+.user_data {
+  padding: 10px;
+  font-size: 2.5em;
+  color: blue;
+  float: left;
+}
+
+.label_names {
+  padding: 5px;
+  float: left;
+  margin-left: 10px;
+}
+
+.value_names {
+  padding: 5px;
+  float: right;
+  margin-right: 10px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+#add_question_comment {
+  margin-top: 30px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+#add_answer {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.add_answer_comment {
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.search_row {
+  padding: 7px;
+}
+
+.search_bar {
+  margin-left: 20px;
+  margin-right: 5px;
+  padding: 4px;
+  padding-bottom: 7px;
+}
+
+.search_button {
+  margin: 0px;
+}
+
+.inline {
+  display: inline;
+}
+
+.user_form {
+  margin-right: 30%;
+  padding: 2%;
+  border-radius: 10px;
+  background-color: #eeeeee;
+}
+
+
+
+.new_answer_comment {
+  display: none;
+}

@@ -1,0 +1,22 @@
+<%= form_for Comment.new, remote: true do |c| %>
+  <%= c.hidden_field :commentable_id, :value => id %>
+  <%= c.hidden_field :commentable_type, :value => type %>
+  <div class="row">
+    <%= c.text_area :detail, rows: "8",  class: "col-xs-5", required: true %>
+  </div>
+  <div class="col-xs-offset-2">
+    <%= c.submit 'Post Your Comment', :class => 'btn btn-primary' %>
+    <% if type == "Question" %>
+      <button class="btn btn-primary" id="cancel_question_comment" type="button">Cancel</button>
+    <% elsif %>
+      <button class="btn btn-primary" id="cancel_answer_comment" type="button" onclick="hideAnswerComment(<%= id %>)" > Cancel</button>
+    <% end %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  function hideAnswerComment(id)
+  {
+    document.getElementById("new_answer_comment"+id).style.display = 'none';
+  }
+</script>

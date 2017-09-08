@@ -1,0 +1,30 @@
+<div class="container container_body">
+  <% if @result.count == 0 %>
+      <div class="row">
+        <h3> NO Record Found</h3>
+  <% else %>
+    <% @result.each do |q| %>
+      <%= link_to question_path(q) do %>
+        <div class="row">
+          <div class="col-xs-1 answer">
+            <div class="answer_content">
+              <%= q.answers.count %>
+            </div>
+            <div class="answer_content">
+              answers
+            </div>
+          </div>
+          <div class="col-xs-11 question">
+            <div class="question_title">
+              <%= q.title %>
+            </div>
+            <div class="time">
+              <%= time_ago_in_words(q.created_at) %> ago
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="seperator"></div>
+    <% end %>
+  <% end %>
+</div>

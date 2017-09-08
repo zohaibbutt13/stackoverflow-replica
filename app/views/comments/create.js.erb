@@ -1,0 +1,11 @@
+<% if @comment.commentable_type == "Question" %>
+  $('#comments').append("<%= escape_javascript render(@comment) %>");
+  $('#new_question_comment textarea').val('');
+  $('#new_question_comment').hide();
+  $('#update_comment<%= @comment.id %>').hide();
+<% elsif @comment.commentable_type == "Answer" %>
+  $('#answer_comments<%= @comment.commentable_id %>').append("<%= escape_javascript render(@comment) %>");
+  $('#new_answer_comment<%= @comment.commentable_id %> textarea').val('');
+  $('#new_answer_comment<%= @comment.commentable_id %>').hide();
+  $('#update_comment<%= @comment.id %>').hide();
+<% end %>

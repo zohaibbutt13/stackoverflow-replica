@@ -1,0 +1,21 @@
+<%= render 'form' %>
+
+<div class="container">
+  <%= form_for @question do |q| %>
+    <div class="jumbotron">
+      <div class="row">
+        <%= q.label :title, class: "col-xs-1" %>
+        <%= q.text_field :title, class: "col-xs-11" %>
+      </div>
+      <div class="row">
+        <%= q.label :detail, class: "col-xs-1" %>
+        <%= q.text_area :detail, rows: "8",  class: "col-xs-11" %>
+      </div>
+      <div class="row">
+        <div class="col-xs-offset-1">
+          <%= q.submit 'Post Your Question', :class => 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+<% end %>
+</div>

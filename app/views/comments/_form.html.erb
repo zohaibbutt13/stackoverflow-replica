@@ -1,0 +1,31 @@
+<div class="container">
+  <%= form_for @comment do |c| %>
+    <div class="container">
+      <% if @question.errors.any? %>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @question.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="jumbotron error_div">
+      <div class="row">
+        <%= c.label :detail, class: "col-xs-1" %>
+        <%= c.text_area :detail, rows: "8",  class: "col-xs-11" %>
+      </div>
+      <div class="row">
+        <div class="col-xs-offset-1">
+          <%= c.submit 'Post your comment', :class => 'ask_question' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

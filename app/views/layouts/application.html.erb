@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <%= image_tag "logo.png", class: "image-responsive" %>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Questions", questions_path %></li>
+          <% if can? :read, User %>
+            <li><%= link_to "Users", users_index_path %></li>
+          <% end %>
+          <li class="search_row">
+            <%= form_tag search_questions_path, method: :get do %>
+              <%= text_field_tag :q, '', class: 'search_bar' %>
+              <%= button_tag "", type: 'submit', class: "search_button btn btn-primary glyphicon glyphicon-search" %>
+            <% end %>
+            <div>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle menu glyphicon glyphicon-user" type="button" data-toggle="dropdown"> <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><%= link_to " Edit Profile", edit_user_registration_path %></li>
+                <li><%= link_to " Logout", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+          <% else %>
+            <li><%= link_to " Sign-in", user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  <br>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+<script type="text/javascript">
+  function dropdownFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // function searchcontent() {
+  //   var input = document.getElementById("search_bar").value;
+  //   alert(input);
+  // }
+</script>
+
+</body>
+</html>
